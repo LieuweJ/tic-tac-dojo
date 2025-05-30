@@ -63,7 +63,7 @@ export class TicTacDoJo {
         continue;
       }
 
-      // check vertical winner
+      // check horizontal winner
       for (let horizontalColsIndex = 0; horizontalColsIndex < 2; horizontalColsIndex++) {
         if (
           this.board[1][horizontalColsIndex] === cellToCheck &&
@@ -88,6 +88,8 @@ export class TicTacDoJo {
         }
       }
     }
+
+    // check diagonal winner:
 
     return false;
   }

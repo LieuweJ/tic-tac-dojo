@@ -100,4 +100,20 @@ describe('Tic-tac-toe game should work', () => {
 
     expect(actual).toBe(expectedOutput);
   });
+
+  test('The game can be won diagonally (topLeft to bottomRight)', () => {
+    const game = new TicTacDoJo();
+
+    game.nextMove(PLAYER_1, '00');
+    game.nextMove(PLAYER_2, '11');
+    game.nextMove(PLAYER_1, '11');
+    game.nextMove(PLAYER_2, '21');
+    game.nextMove(PLAYER_1, '22');
+
+    const expectedOutput = `Player ${PLAYER_1} has won!`;
+
+    const actual = game.displayGameState();
+
+    expect(actual).toBe(expectedOutput);
+  });
 });
