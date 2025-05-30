@@ -30,8 +30,6 @@ export class TicTacDoJo {
 
   private currentPlayer: Player = PLAYER_1;
 
-  constructor() {}
-
   nextMove(player: Player, move: Move) {
     if (this.gameState !== GAME_STATES.IN_PROGRESS) {
       throw new Error(`No moves allowed. Current game.state: ${this.gameState}`);

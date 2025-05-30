@@ -12,9 +12,9 @@
 - The game can be won diagonally (topRight to bottomLeft)
 - Move cannot be made on a square which is already taken.
 - A move cannot be made when the game is not in progress
+- Tie can be determined
 
 🚧 WIP
-- Tie can be determined
 
 ⚠️ TODO
 
