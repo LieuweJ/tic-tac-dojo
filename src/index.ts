@@ -36,8 +36,14 @@ export class TicTacDoJo {
     const coords = this.getCoors(move);
 
     this.board[coords.row][coords.col] = player;
+    this.updateGameState();
 
     this.currentPlayer = player === PLAYER_1 ? PLAYER_2 : PLAYER_1;
+  }
+
+  private updateGameState() {
+    console.log('updating gameState here.');
+    return;
   }
 
   private getCoors(move: Move): Coords {
@@ -93,7 +99,7 @@ export class TicTacDoJo {
   displayGameState() {
     switch (this.gameState) {
       case GAME_STATES.WON:
-        return 'the game is won';
+        return `the game is won by ${this.currentPlayer}`;
       case GAME_STATES.LOST:
         return 'the game is lost';
       default:
