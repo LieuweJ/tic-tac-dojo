@@ -9,9 +9,10 @@
 - The player cannot make a move outside the board (horizontally)
 - A player move can only consist of a string with 2 number.
 - The game can be won diagonally (topLeft to bottomRight)
+- The game can be won diagonally (topRight to bottomLeft)
 
 🚧 WIP
-- The game can be won diagonally (topRight to bottomLeft)
+- Refactor: split up 'hasWinner' to 3 methods, each finding the different combo.
 
 ⚠️ TODO
 - Tie can be determined

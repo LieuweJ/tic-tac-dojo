@@ -56,6 +56,18 @@ export class TicTacDoJo {
   }
 
   private hasWinner(): boolean {
+    if (this.hasHorizontalWinner()) {
+      return true;
+    }
+
+    if (this.hasVerticalWinner()) {
+      return true;
+    }
+
+    return this.hasDiagonalWinner();
+  }
+
+  private hasHorizontalWinner(): boolean {
     for (let topRowIndex = 0; topRowIndex < 3; topRowIndex++) {
       const cellToCheck = this.board[0][0];
 
@@ -64,17 +76,17 @@ export class TicTacDoJo {
       }
 
       // check horizontal winner
-      for (let horizontalColsIndex = 0; horizontalColsIndex < 2; horizontalColsIndex++) {
-        if (
-          this.board[1][horizontalColsIndex] === cellToCheck &&
-          this.board[2][horizontalColsIndex] === cellToCheck
-        ) {
+      for (let colsIndex = 0; colsIndex < 2; colsIndex++) {
+        if (this.board[1][colsIndex] === cellToCheck && this.board[2][colsIndex] === cellToCheck) {
           return true;
         }
       }
     }
 
-    // check vertical winner
+    return false;
+  }
+
+  private hasVerticalWinner(): boolean {
     for (let topRowIndex = 0; topRowIndex < 3; topRowIndex++) {
       const cellToCheck = this.board[0][0];
 
@@ -89,17 +101,11 @@ export class TicTacDoJo {
       }
     }
 
-    // check diagonal winner:
-    const cellToCheckTL = this.board[0][0];
-    if (
-      cellToCheckTL !== EMPTY_CELL &&
-      this.board[1][1] === cellToCheckTL &&
-      this.board[2][2] === cellToCheckTL
-    ) {
-      return true;
-    }
+    return false;
+  }
 
-    // check diagonal winner:
+  private hasDiagonalWinner(): boolean {
+    // Check top left to bottom right:
     const cellTopLeft = this.board[0][0];
     if (
       cellTopLeft !== EMPTY_CELL &&
@@ -109,7 +115,7 @@ export class TicTacDoJo {
       return true;
     }
 
-    // check diagonal winner:
+    // Check top right to bottom left:
     const cellTopRight = this.board[2][0];
     if (
       cellTopRight !== EMPTY_CELL &&
