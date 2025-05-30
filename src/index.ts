@@ -93,6 +93,10 @@ export class TicTacDoJo {
   }
 
   private getCoors(move: Move): Coords {
+    if (move.length !== 2) {
+      throw new Error(`Move is of incorrect format: ${move}`);
+    }
+
     const row = Number(move[0]);
     const validRowValues = [0, 1, 2];
 

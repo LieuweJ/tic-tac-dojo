@@ -42,8 +42,12 @@ describe('Tic-tac-toe game should work', () => {
   test('A move can only consist of a string with 2 numbers', () => {
     const game = new TicTacDoJo();
 
+    const incorrectMove = '110';
+
     // @ts-expect-error player passes an invalid 'move', to test if the Javascript guard fails
-    expect(() => game.nextMove(PLAYER_1, '110')).toThrow(new Error(`Move is of incorrect format`));
+    expect(() => game.nextMove(PLAYER_1, incorrectMove)).toThrow(
+      new Error(`Move is of incorrect format: ${incorrectMove}`)
+    );
   });
 
   test('The next player can be asked to make a move', () => {
