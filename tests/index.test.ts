@@ -73,6 +73,23 @@ describe('Tic-tac-toe game should work', () => {
     expect(game.displayGameState()).toBe(expectedOutput);
   });
 
+  test('A move cannot be made when a game is in progress', () => {
+    const game = new TicTacDoJo();
+
+    game.nextMove(PLAYER_1, '00');
+    game.nextMove(PLAYER_2, '21');
+    game.nextMove(PLAYER_1, '01');
+
+    game.nextMove(PLAYER_2, '22');
+    game.nextMove(PLAYER_1, '02');
+
+    expect(game.displayGameState()).toBe(`Player ${PLAYER_1} has won!`);
+
+    expect(() => game.nextMove(PLAYER_2, '10')).toThrow(
+      new Error(`No moves allowed. Current game.state: ${GAME_STATES.WON}`)
+    );
+  });
+
   test('Move needs to be made by the next player', () => {
     const game = new TicTacDoJo();
 
@@ -149,20 +166,39 @@ describe('Tic-tac-toe game should work', () => {
     expect(actual).toBe(expectedOutput);
   });
 
-  test('A move cannot be made when a game is in progress', () => {
+  test('The game can be won diagonally (topRight to bottomLeft)', () => {
+    const game = new TicTacDoJo();
+
+    game.nextMove(PLAYER_1, '20');
+    game.nextMove(PLAYER_2, '01');
+    game.nextMove(PLAYER_1, '11');
+    game.nextMove(PLAYER_2, '21');
+    game.nextMove(PLAYER_1, '02');
+
+    const expectedOutput = `Player ${PLAYER_1} has won!`;
+
+    const actual = game.displayGameState();
+
+    expect(actual).toBe(expectedOutput);
+  });
+
+  test('A tie can be determined', () => {
     const game = new TicTacDoJo();
 
     game.nextMove(PLAYER_1, '00');
-    game.nextMove(PLAYER_2, '21');
-    game.nextMove(PLAYER_1, '01');
-
-    game.nextMove(PLAYER_2, '22');
+    game.nextMove(PLAYER_2, '01');
     game.nextMove(PLAYER_1, '02');
 
-    expect(game.displayGameState()).toBe(`Player ${PLAYER_1} has won!`);
+    game.nextMove(PLAYER_2, '11');
+    game.nextMove(PLAYER_1, '10');
+    game.nextMove(PLAYER_2, '12');
 
-    expect(() => game.nextMove(PLAYER_2, '10')).toThrow(
-      new Error(`No moves allowed. Current game.state: ${GAME_STATES.WON}`)
-    );
+    game.nextMove(PLAYER_1, '21');
+    game.nextMove(PLAYER_2, '20');
+    game.nextMove(PLAYER_1, '22');
+
+    const expectedOutput = `Game is a tie!`;
+
+    expect(game.displayGameState()).toBe(expectedOutput);
   });
 });

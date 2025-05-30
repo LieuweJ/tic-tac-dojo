@@ -11,11 +11,11 @@
 - The game can be won diagonally (topLeft to bottomRight)
 - The game can be won diagonally (topRight to bottomLeft)
 - Move cannot be made on a square which is already taken.
-
-🚧 WIP
 - A move cannot be made when the game is not in progress
 
-⚠️ TODO
+🚧 WIP
 - Tie can be determined
+
+⚠️ TODO
 
 🅿️ PARKED
