@@ -49,4 +49,15 @@ describe('Tic-tac-toe game should work', () => {
 
     expect(actual).toBe(expectedOutput);
   });
+
+  test('Move needs to be made by the next player', () => {
+    const game = new TicTacDoJo();
+
+    game.nextMove(PLAYER_1, '00');
+    game.nextMove(PLAYER_1, '10');
+
+    expect(() => game.nextMove(PLAYER_1, '10')).toBe(
+      `Player ${PLAYER_1} makes a move whilst it is the turn of ${PLAYER_2}`
+    );
+  });
 });
