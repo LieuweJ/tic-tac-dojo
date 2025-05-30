@@ -104,7 +104,7 @@ export class TicTacDoJo {
     const validColValues = [0, 1, 2];
 
     if (!validColValues.includes(col)) {
-      throw Error(`Move has incorrect row: ${row}`);
+      throw Error(`Move has incorrect col: ${col}`);
     }
 
     return {
