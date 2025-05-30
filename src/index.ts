@@ -90,8 +90,32 @@ export class TicTacDoJo {
     }
 
     // check diagonal winner:
-    const cellToCheck = this.board[0][0];
-    if (this.board[1][1] === cellToCheck && this.board[2][2] === cellToCheck) {
+    const cellToCheckTL = this.board[0][0];
+    if (
+      cellToCheckTL !== EMPTY_CELL &&
+      this.board[1][1] === cellToCheckTL &&
+      this.board[2][2] === cellToCheckTL
+    ) {
+      return true;
+    }
+
+    // check diagonal winner:
+    const cellTopLeft = this.board[0][0];
+    if (
+      cellTopLeft !== EMPTY_CELL &&
+      this.board[1][1] === cellTopLeft &&
+      this.board[2][2] === cellTopLeft
+    ) {
+      return true;
+    }
+
+    // check diagonal winner:
+    const cellTopRight = this.board[2][0];
+    if (
+      cellTopRight !== EMPTY_CELL &&
+      this.board[1][1] === cellTopRight &&
+      this.board[0][2] === cellTopRight
+    ) {
       return true;
     }
 

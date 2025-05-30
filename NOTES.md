@@ -8,12 +8,12 @@
 - The player cannot make a move outside the board (vertically)
 - The player cannot make a move outside the board (horizontally)
 - A player move can only consist of a string with 2 number.
-
-🚧 WIP
 - The game can be won diagonally (topLeft to bottomRight)
 
-⚠️ TODO
+🚧 WIP
 - The game can be won diagonally (topRight to bottomLeft)
-- tie can be determined
+
+⚠️ TODO
+- Tie can be determined
 
 🅿️ PARKED
