@@ -1,4 +1,7 @@
 const EMPTY_CELL = '_';
+export const PLAYER_1 = 'X';
+
+type Move = '11' | '12' | '13' | '21' | '22' | '23' | '31' | '32' | '33';
 
 export class TicTacDoJo {
   private board: string[][] = [
@@ -7,8 +10,10 @@ export class TicTacDoJo {
     [EMPTY_CELL, EMPTY_CELL, EMPTY_CELL],
   ];
 
-  constructor() {
-    console.log('TicTacDojo initialized');
+  constructor() {}
+
+  nextMove(player: string, move: Move) {
+    console.log('nothing happened', player, move);
   }
 
   displayBoard(): string {
