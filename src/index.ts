@@ -2,7 +2,7 @@ const EMPTY_CELL = '_';
 export const PLAYER_1 = 'X';
 export const PLAYER_2 = 'O';
 
-const GAME_STATES = {
+export const GAME_STATES = {
   IN_PROGRESS: 'IN_PROGRESS',
   WON: 'WON',
   LOST: 'LOST',
@@ -35,7 +35,7 @@ export class TicTacDoJo {
   nextMove(player: Player, move: Move) {
     if (player !== this.currentPlayer) {
       throw new Error(
-        `Player ${player} makes a move whilst it is the turn of ${this.currentPlayer}`
+        `Player ${player} makes move ${move} whilst it is the turn of ${this.currentPlayer}`
       );
     }
 

@@ -1,4 +1,4 @@
-import { PLAYER_1, PLAYER_2, TicTacDoJo } from '@/index';
+import { GAME_STATES, PLAYER_1, PLAYER_2, TicTacDoJo } from '@/index';
 
 describe('Tic-tac-toe game should work', () => {
   test('Empty board should be displayed', () => {
@@ -78,8 +78,10 @@ describe('Tic-tac-toe game should work', () => {
 
     game.nextMove(PLAYER_1, '00');
 
-    expect(() => game.nextMove(PLAYER_1, '10')).toThrow(
-      new Error(`Player ${PLAYER_1} makes a move whilst it is the turn of ${PLAYER_2}`)
+    const nextMove = '10';
+
+    expect(() => game.nextMove(PLAYER_1, nextMove)).toThrow(
+      new Error(`Player ${PLAYER_1} makes move ${nextMove} whilst it is the turn of ${PLAYER_2}`)
     );
   });
 
@@ -119,7 +121,7 @@ describe('Tic-tac-toe game should work', () => {
     const game = new TicTacDoJo();
 
     game.nextMove(PLAYER_1, '00');
-    game.nextMove(PLAYER_2, '11');
+    game.nextMove(PLAYER_2, '01');
     game.nextMove(PLAYER_1, '11');
     game.nextMove(PLAYER_2, '21');
     game.nextMove(PLAYER_1, '22');
@@ -135,7 +137,7 @@ describe('Tic-tac-toe game should work', () => {
     const game = new TicTacDoJo();
 
     game.nextMove(PLAYER_1, '20');
-    game.nextMove(PLAYER_2, '11');
+    game.nextMove(PLAYER_2, '01');
     game.nextMove(PLAYER_1, '11');
     game.nextMove(PLAYER_2, '21');
     game.nextMove(PLAYER_1, '02');
@@ -147,25 +149,20 @@ describe('Tic-tac-toe game should work', () => {
     expect(actual).toBe(expectedOutput);
   });
 
-  test('The game can be won diagonally (topRight to bottomLeft)', () => {
+  test('A move cannot be made when a game is in progress', () => {
     const game = new TicTacDoJo();
 
     game.nextMove(PLAYER_1, '00');
-    game.nextMove(PLAYER_2, '01');
+    game.nextMove(PLAYER_2, '21');
+    game.nextMove(PLAYER_1, '01');
+
+    game.nextMove(PLAYER_2, '22');
     game.nextMove(PLAYER_1, '02');
 
-    game.nextMove(PLAYER_2, '10');
-    game.nextMove(PLAYER_1, '11');
-    game.nextMove(PLAYER_2, '12');
+    expect(game.displayGameState()).toBe(`Player ${PLAYER_1} has won!`);
 
-    game.nextMove(PLAYER_1, '20');
-    game.nextMove(PLAYER_2, '21');
-    game.nextMove(PLAYER_1, '22');
-
-    const expectedOutput = `Game has tied!`;
-
-    const actual = game.displayGameState();
-
-    expect(actual).toBe(expectedOutput);
+    expect(() => game.nextMove(PLAYER_2, '10')).toThrow(
+      new Error(`No more moves allowed. Game is: ${GAME_STATES.WON}.`)
+    );
   });
 });

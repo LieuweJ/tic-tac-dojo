@@ -13,8 +13,9 @@
 - Move cannot be made on a square which is already taken.
 
 🚧 WIP
-- Tie can be determined
+- A move cannot be made when the game is not in progress
 
 ⚠️ TODO
+- Tie can be determined
 
 🅿️ PARKED
