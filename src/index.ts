@@ -39,7 +39,7 @@ export class TicTacDoJo {
       );
     }
 
-    const coords = this.getCoors(move);
+    const coords = this.getCoords(move);
 
     this.board[coords.row][coords.col] = player;
     this.updateGameState();
@@ -92,7 +92,7 @@ export class TicTacDoJo {
     return false;
   }
 
-  private getCoors(move: Move): Coords {
+  private getCoords(move: Move): Coords {
     if (move.length !== 2) {
       throw new Error(`Move is of incorrect format: ${move}`);
     }
