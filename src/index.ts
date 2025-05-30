@@ -90,6 +90,10 @@ export class TicTacDoJo {
     }
 
     // check diagonal winner:
+    const cellToCheck = this.board[0][0];
+    if (this.board[1][1] === cellToCheck && this.board[2][2] === cellToCheck) {
+      return true;
+    }
 
     return false;
   }
