@@ -74,6 +74,8 @@ export class TicTacDoJo {
       }
     }
 
+    // check horizontal winner
+
     return false;
   }
 

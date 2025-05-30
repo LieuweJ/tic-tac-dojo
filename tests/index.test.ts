@@ -34,6 +34,16 @@ describe('Tic-tac-toe game should work', () => {
     expect(game.displayGameState()).toBe(expectedOutput);
   });
 
+  test('Move needs to be made by the next player', () => {
+    const game = new TicTacDoJo();
+
+    game.nextMove(PLAYER_1, '00');
+
+    expect(() => game.nextMove(PLAYER_1, '10')).toThrow(
+      new Error(`Player ${PLAYER_1} makes a move whilst it is the turn of ${PLAYER_2}`)
+    );
+  });
+
   test('The game can be won vertically', () => {
     const game = new TicTacDoJo();
 
@@ -50,13 +60,19 @@ describe('Tic-tac-toe game should work', () => {
     expect(actual).toBe(expectedOutput);
   });
 
-  test('Move needs to be made by the next player', () => {
+  test('The game can be won horizontally', () => {
     const game = new TicTacDoJo();
 
     game.nextMove(PLAYER_1, '00');
+    game.nextMove(PLAYER_2, '12');
+    game.nextMove(PLAYER_1, '01');
+    game.nextMove(PLAYER_2, '11');
+    game.nextMove(PLAYER_1, '02');
 
-    expect(() => game.nextMove(PLAYER_1, '10')).toThrow(
-      new Error(`Player ${PLAYER_1} makes a move whilst it is the turn of ${PLAYER_2}`)
-    );
+    const expectedOutput = `Player ${PLAYER_1} has won!`;
+
+    const actual = game.displayGameState();
+
+    expect(actual).toBe(expectedOutput);
   });
 });
