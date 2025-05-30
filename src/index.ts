@@ -33,6 +33,9 @@ export class TicTacDoJo {
   constructor() {}
 
   nextMove(player: Player, move: Move) {
+    if (this.gameState !== GAME_STATES.IN_PROGRESS) {
+      throw new Error(`No moves allowed. Current game.state: ${this.gameState}`);
+    }
     if (player !== this.currentPlayer) {
       throw new Error(
         `Player ${player} makes move ${move} whilst it is the turn of ${this.currentPlayer}`

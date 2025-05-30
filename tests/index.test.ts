@@ -162,7 +162,7 @@ describe('Tic-tac-toe game should work', () => {
     expect(game.displayGameState()).toBe(`Player ${PLAYER_1} has won!`);
 
     expect(() => game.nextMove(PLAYER_2, '10')).toThrow(
-      new Error(`No more moves allowed. Game is: ${GAME_STATES.WON}.`)
+      new Error(`No moves allowed. Current game.state: ${GAME_STATES.WON}`)
     );
   });
 });
