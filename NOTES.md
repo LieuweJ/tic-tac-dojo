@@ -7,11 +7,10 @@
 - The game can be won horizontally
 
 🚧 WIP
-
+- The player cannot make a move outside the board
 
 ⚠️ TODO
 - The game can be won diagonally
-- The game can be won horizontally
 - tie can be determined
 
 🅿️ PARKED

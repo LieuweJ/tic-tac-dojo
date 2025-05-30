@@ -25,6 +25,13 @@ describe('Tic-tac-toe game should work', () => {
     expect(result).toBe(expectedOutput);
   });
 
+  test('Player cannot make a move which is outside of the board (vertically)', () => {
+    const game = new TicTacDoJo();
+
+    // @ts-expect-error player passes an invalid 'move', to test if the Javascript guard fails
+    expect(() => game.nextMove(PLAYER_1, '42')).toThrow(new Error(`Move has incorrect row: 4`));
+  });
+
   test('The next player can be asked to make a move', () => {
     const game = new TicTacDoJo();
 
