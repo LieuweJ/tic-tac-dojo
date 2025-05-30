@@ -10,11 +10,11 @@
 - A player move can only consist of a string with 2 number.
 - The game can be won diagonally (topLeft to bottomRight)
 - The game can be won diagonally (topRight to bottomLeft)
+- Move cannot be made on a square which is already taken.
 
 🚧 WIP
-- move cannot be made on a square which is already taken.
+- Tie can be determined
 
 ⚠️ TODO
-- Tie can be determined
 
 🅿️ PARKED
