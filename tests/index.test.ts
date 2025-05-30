@@ -1,10 +1,13 @@
-import { sum } from '@/index';
+import { TicTacDoJo } from '@/index';
 
-describe('Sum should be', () => {
-  test('total of 3 when adding 1 and 2', () => {
-    const expectedOutput = 3;
+describe('Tic-tac-toe game should work', () => {
+  test('Empty board should be displayed', () => {
+    const game = new TicTacDoJo();
 
-    let result = sum(1, 2);
+    const expectedOutput =
+      `   |   |   ` + `\n-----------\n` + `   |   |   ` + `\n-----------\n` + `   |   |   `;
+
+    let result = game.displayBoard();
 
     expect(result).toBe(expectedOutput);
   });
