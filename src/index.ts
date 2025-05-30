@@ -1,5 +1,16 @@
 const EMPTY_CELL = '_';
 export const PLAYER_1 = 'X';
+export const PLAYER_2 = 'O';
+
+const GAME_STATES = {
+  IN_PROGRESS: 'IN_PROGRESS',
+  WON: 'WON',
+  LOST: 'LOST',
+};
+
+type Player = 'X' | 'O';
+
+type GameState = (typeof GAME_STATES)[keyof typeof GAME_STATES];
 
 type Coords = {
   row: number;
@@ -15,14 +26,18 @@ export class TicTacDoJo {
     [EMPTY_CELL, EMPTY_CELL, EMPTY_CELL],
   ];
 
+  private gameState: GameState = GAME_STATES.IN_PROGRESS;
+
+  private currentPlayer: Player = PLAYER_1;
+
   constructor() {}
 
-  nextMove(player: string, move: Move) {
-    console.log('nothing happened', player, move);
+  nextMove(player: Player, move: Move) {
     const coords = this.getCoors(move);
 
     this.board[coords.row][coords.col] = player;
-    const a = 1;
+
+    this.currentPlayer = player === PLAYER_1 ? PLAYER_2 : PLAYER_1;
   }
 
   private getCoors(move: Move): Coords {
@@ -73,5 +88,16 @@ export class TicTacDoJo {
     }
 
     return output;
+  }
+
+  displayGameState() {
+    switch (this.gameState) {
+      case GAME_STATES.WON:
+        return 'the game is won';
+      case GAME_STATES.LOST:
+        return 'the game is lost';
+      default:
+        return `Player ${this.currentPlayer} is asked to make a move`;
+    }
   }
 }

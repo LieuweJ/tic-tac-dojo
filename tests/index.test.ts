@@ -1,4 +1,4 @@
-import { PLAYER_1, TicTacDoJo } from '@/index';
+import { PLAYER_1, PLAYER_2, TicTacDoJo } from '@/index';
 
 describe('Tic-tac-toe game should work', () => {
   test('Empty board should be displayed', () => {
@@ -23,5 +23,14 @@ describe('Tic-tac-toe game should work', () => {
     let result = game.displayBoard();
 
     expect(result).toBe(expectedOutput);
+  });
+
+  test('The next player can be asked to make a move', () => {
+    const game = new TicTacDoJo();
+
+    game.nextMove(PLAYER_1, '12');
+    const expectedOutput = `Player ${PLAYER_2} is asked to make a move`;
+
+    expect(game.displayGameState()).toBe(expectedOutput);
   });
 });
