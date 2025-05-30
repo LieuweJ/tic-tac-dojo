@@ -33,17 +33,48 @@ export class TicTacDoJo {
   constructor() {}
 
   nextMove(player: Player, move: Move) {
+    if (player !== this.currentPlayer) {
+      throw new Error(
+        `Player ${player} makes a move whilst it is the turn of ${this.currentPlayer}`
+      );
+    }
+
     const coords = this.getCoors(move);
 
     this.board[coords.row][coords.col] = player;
     this.updateGameState();
 
-    this.currentPlayer = player === PLAYER_1 ? PLAYER_2 : PLAYER_1;
+    if (this.gameState === GAME_STATES.IN_PROGRESS) {
+      this.currentPlayer = player === PLAYER_1 ? PLAYER_2 : PLAYER_1;
+    }
   }
 
   private updateGameState() {
-    console.log('updating gameState here.');
-    return;
+    if (this.hasWinner()) {
+      this.gameState = GAME_STATES.WON;
+    }
+  }
+
+  private hasWinner(): boolean {
+    for (let topRowIndex = 0; topRowIndex < 3; topRowIndex++) {
+      const cellToCheck = this.board[0][0];
+
+      if (cellToCheck === EMPTY_CELL) {
+        continue;
+      }
+
+      // check vertical winner
+      for (let horizontalColsIndex = 0; horizontalColsIndex < 2; horizontalColsIndex++) {
+        if (
+          this.board[1][horizontalColsIndex] === cellToCheck &&
+          this.board[2][horizontalColsIndex] === cellToCheck
+        ) {
+          return true;
+        }
+      }
+    }
+
+    return false;
   }
 
   private getCoors(move: Move): Coords {
@@ -96,14 +127,15 @@ export class TicTacDoJo {
     return output;
   }
 
-  displayGameState() {
-    switch (this.gameState) {
-      case GAME_STATES.WON:
-        return `the game is won by ${this.currentPlayer}`;
-      case GAME_STATES.LOST:
-        return 'the game is lost';
-      default:
-        return `Player ${this.currentPlayer} is asked to make a move`;
+  displayGameState(): string {
+    if (this.gameState === GAME_STATES.WON) {
+      return `Player ${this.currentPlayer} has won!`;
     }
+
+    if (this.gameState === GAME_STATES.LOST) {
+      return `Player ${this.currentPlayer} is lost`;
+    }
+
+    return `Player ${this.currentPlayer} is asked to make a move`;
   }
 }

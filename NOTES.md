@@ -4,11 +4,11 @@
 - next player can make a move when game is in progress
 
 🚧 WIP
-- The game can be won horizontally
+- the game can be won vertically
 
 ⚠️ TODO
 - The game can be won diagonally
-- the game can be won vertically
+- The game can be won horizontally
 - tie can be determined
 
 🅿️ PARKED

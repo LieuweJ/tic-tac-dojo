@@ -34,15 +34,19 @@ describe('Tic-tac-toe game should work', () => {
     expect(game.displayGameState()).toBe(expectedOutput);
   });
 
-  test('The game can be won horizontally', () => {
+  test('The game can be won vertically', () => {
     const game = new TicTacDoJo();
 
     game.nextMove(PLAYER_1, '00');
-    game.nextMove(PLAYER_1, '01');
     game.nextMove(PLAYER_2, '02');
+    game.nextMove(PLAYER_1, '10');
+    game.nextMove(PLAYER_2, '01');
+    game.nextMove(PLAYER_1, '20');
 
-    const expectedOutput = `The game is won by ${PLAYER_1}`;
+    const expectedOutput = `Player ${PLAYER_1} has won!`;
 
-    expect(game.displayGameState()).toBe(expectedOutput);
+    const actual = game.displayGameState();
+
+    expect(actual).toBe(expectedOutput);
   });
 });
