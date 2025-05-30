@@ -113,9 +113,7 @@ describe('Tic-tac-toe game should work', () => {
 
     const expectedOutput = `Player ${PLAYER_1} has won!`;
 
-    const actual = game.displayGameState();
-
-    expect(actual).toBe(expectedOutput);
+    expect(game.displayGameState()).toBe(expectedOutput);
   });
 
   test('The game can be won horizontally', () => {
@@ -129,9 +127,7 @@ describe('Tic-tac-toe game should work', () => {
 
     const expectedOutput = `Player ${PLAYER_1} has won!`;
 
-    const actual = game.displayGameState();
-
-    expect(actual).toBe(expectedOutput);
+    expect(game.displayGameState()).toBe(expectedOutput);
   });
 
   test('The game can be won diagonally (topLeft to bottomRight)', () => {
@@ -145,9 +141,7 @@ describe('Tic-tac-toe game should work', () => {
 
     const expectedOutput = `Player ${PLAYER_1} has won!`;
 
-    const actual = game.displayGameState();
-
-    expect(actual).toBe(expectedOutput);
+    expect(game.displayGameState()).toBe(expectedOutput);
   });
 
   test('The game can be won diagonally (topRight to bottomLeft)', () => {
@@ -161,9 +155,7 @@ describe('Tic-tac-toe game should work', () => {
 
     const expectedOutput = `Player ${PLAYER_1} has won!`;
 
-    const actual = game.displayGameState();
-
-    expect(actual).toBe(expectedOutput);
+    expect(game.displayGameState()).toBe(expectedOutput);
   });
 
   test('The game can be won diagonally (topRight to bottomLeft)', () => {
@@ -177,9 +169,7 @@ describe('Tic-tac-toe game should work', () => {
 
     const expectedOutput = `Player ${PLAYER_1} has won!`;
 
-    const actual = game.displayGameState();
-
-    expect(actual).toBe(expectedOutput);
+    expect(game.displayGameState()).toBe(expectedOutput);
   });
 
   test('A tie can be determined', () => {

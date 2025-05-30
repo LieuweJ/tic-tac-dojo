@@ -5,7 +5,7 @@ export const PLAYER_2 = 'O';
 export const GAME_STATES = {
   IN_PROGRESS: 'IN_PROGRESS',
   WON: 'WON',
-  LOST: 'LOST',
+  TIE: 'TIE',
 };
 
 type Player = 'X' | 'O';
@@ -62,7 +62,23 @@ export class TicTacDoJo {
   private updateGameState() {
     if (this.hasWinner()) {
       this.gameState = GAME_STATES.WON;
+
+      return;
     }
+
+    if (this.hasTie()) {
+      this.gameState = GAME_STATES.TIE;
+
+      return;
+    }
+  }
+
+  private hasTie(): boolean {
+    return this.board.every((row) => {
+      return row.every((cell) => {
+        return cell !== EMPTY_CELL;
+      });
+    });
   }
 
   private hasWinner(): boolean {
@@ -197,8 +213,8 @@ export class TicTacDoJo {
       return `Player ${this.currentPlayer} has won!`;
     }
 
-    if (this.gameState === GAME_STATES.LOST) {
-      return `Player ${this.currentPlayer} is lost`;
+    if (this.gameState === GAME_STATES.TIE) {
+      return `Game is a tie!`;
     }
 
     return `Player ${this.currentPlayer} is asked to make a move`;
