@@ -33,11 +33,11 @@ export class TicTacDoJo {
   constructor() {}
 
   nextMove(player: Player, move: Move) {
-    // if (player !== this.currentPlayer) {
-    //   throw new Error(
-    //     `Player ${player} makes a move whilst it is the turn of ${this.currentPlayer}`
-    //   );
-    // }
+    if (player !== this.currentPlayer) {
+      throw new Error(
+        `Player ${player} makes a move whilst it is the turn of ${this.currentPlayer}`
+      );
+    }
 
     const coords = this.getCoors(move);
 
