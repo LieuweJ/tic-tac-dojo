@@ -41,6 +41,12 @@ export class TicTacDoJo {
 
     const coords = this.getCoords(move);
 
+    if (this.board[coords.row][coords.col] !== EMPTY_CELL) {
+      throw new Error(
+        `Player ${player} wants to play move ${move}. This move is already taken on the board. Current board: \n${this.displayBoard()}`
+      );
+    }
+
     this.board[coords.row][coords.col] = player;
     this.updateGameState();
 

@@ -50,6 +50,20 @@ describe('Tic-tac-toe game should work', () => {
     );
   });
 
+  test('Not allowed to make a move on a square which already is not empty,', () => {
+    const game = new TicTacDoJo();
+
+    const move = '00';
+
+    game.nextMove(PLAYER_1, move);
+
+    expect(() => game.nextMove(PLAYER_2, move)).toThrow(
+      new Error(
+        `Player ${PLAYER_2} wants to play move ${move}. This move is already taken on the board. Current board: \n${game.displayBoard()}`
+      )
+    );
+  });
+
   test('The next player can be asked to make a move', () => {
     const game = new TicTacDoJo();
 

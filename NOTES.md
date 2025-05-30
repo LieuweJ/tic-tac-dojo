@@ -12,7 +12,7 @@
 - The game can be won diagonally (topRight to bottomLeft)
 
 🚧 WIP
-- Refactor: split up 'hasWinner' to 3 methods, each finding the different combo.
+- move cannot be made on a square which is already taken.
 
 ⚠️ TODO
 - Tie can be determined
