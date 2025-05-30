@@ -75,6 +75,20 @@ export class TicTacDoJo {
     }
 
     // check horizontal winner
+    for (let topRowIndex = 0; topRowIndex < 3; topRowIndex++) {
+      const cellToCheck = this.board[0][0];
+
+      if (cellToCheck === EMPTY_CELL) {
+        continue;
+      }
+
+      // check vertical winner
+      for (let rowsIndex = 0; rowsIndex < 2; rowsIndex++) {
+        if (this.board[rowsIndex][1] === cellToCheck && this.board[rowsIndex][2] === cellToCheck) {
+          return true;
+        }
+      }
+    }
 
     return false;
   }
