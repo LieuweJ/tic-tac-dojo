@@ -5,9 +5,10 @@
 - the game can be won vertically
 - Move needs to be made by the next player.
 - The game can be won horizontally
+- The player cannot make a move outside the board (vertically)
 
 🚧 WIP
-- The player cannot make a move outside the board
+- The player cannot make a move outside the board (horizontally)
 
 ⚠️ TODO
 - The game can be won diagonally
