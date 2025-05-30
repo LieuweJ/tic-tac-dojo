@@ -1,7 +1,12 @@
 const EMPTY_CELL = '_';
 export const PLAYER_1 = 'X';
 
-type Move = '11' | '12' | '13' | '21' | '22' | '23' | '31' | '32' | '33';
+type Coords = {
+  row: number;
+  col: number;
+};
+
+type Move = '00' | '01' | '02' | '10' | '11' | '12' | '20' | '21' | '22';
 
 export class TicTacDoJo {
   private board: string[][] = [
@@ -14,6 +19,31 @@ export class TicTacDoJo {
 
   nextMove(player: string, move: Move) {
     console.log('nothing happened', player, move);
+    const coords = this.getCoors(move);
+
+    this.board[coords.row][coords.col] = player;
+    const a = 1;
+  }
+
+  private getCoors(move: Move): Coords {
+    const row = Number(move[0]);
+    const validRowValues = [0, 1, 2];
+
+    if (!validRowValues.includes(row)) {
+      throw Error(`move has incorrect row: ${row}`);
+    }
+
+    const col = Number(move[1]);
+    const validColValues = [0, 1, 2];
+
+    if (!validColValues.includes(col)) {
+      throw Error(`move has incorrect row: ${row}`);
+    }
+
+    return {
+      row,
+      col,
+    };
   }
 
   displayBoard(): string {
@@ -24,7 +54,7 @@ export class TicTacDoJo {
 
       for (let cellIndex = 0; cellIndex < row.length; cellIndex++) {
         const cell = this.board[rowIndex][cellIndex];
-        const cellOutput = EMPTY_CELL ? '   ' : ` ${cell} `;
+        const cellOutput = cell === EMPTY_CELL ? '   ' : ` ${cell} `;
 
         let border = '|';
 

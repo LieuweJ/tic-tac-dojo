@@ -16,9 +16,9 @@ describe('Tic-tac-toe game should work', () => {
     const game = new TicTacDoJo();
 
     const expectedOutput =
-      ` X |   |   ` + `\n-----------\n` + `   |   |   ` + `\n-----------\n` + `   |   |   `;
+      `   |   |   ` + `\n-----------\n` + `   |   | X ` + `\n-----------\n` + `   |   |   `;
 
-    game.nextMove(PLAYER_1, '11');
+    game.nextMove(PLAYER_1, '12');
 
     let result = game.displayBoard();
 
