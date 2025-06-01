@@ -1,4 +1,4 @@
-const EMPTY_CELL = '_';
+export const EMPTY_CELL = '_';
 export const PLAYER_1 = 'X';
 export const PLAYER_2 = 'O';
 
@@ -8,7 +8,7 @@ export const GAME_STATES = {
   TIE: 'TIE',
 };
 
-type Player = 'X' | 'O';
+export type Player = typeof PLAYER_1 | typeof PLAYER_2;
 
 type GameState = (typeof GAME_STATES)[keyof typeof GAME_STATES];
 
@@ -17,7 +17,7 @@ type Coords = {
   col: number;
 };
 
-type Move = '00' | '01' | '02' | '10' | '11' | '12' | '20' | '21' | '22';
+export type Move = '00' | '01' | '02' | '10' | '11' | '12' | '20' | '21' | '22';
 
 export class TicTacDoJo {
   private board: string[][] = [

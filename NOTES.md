@@ -15,7 +15,10 @@
 - Tie can be determined
 
 🚧 WIP
+- Player can make a move
 
 ⚠️ TODO
+- Player can use a strategy
+- Game asks players to move until tie or won.
 
 🅿️ PARKED
