@@ -136,12 +136,14 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('The game can be won vertically', () => {
+    const winnerName = 'John Doe';
+
     const game = new Game({
-      player1: createPlayerWithMoves(['00', '10', '20'], 'player 1'),
-      player2: createPlayerWithMoves(['02', '01'], 'player 2'),
+      player1: createPlayerWithMoves(['00', '10', '20'], winnerName),
+      player2: createPlayerWithMoves(['02', '01'], 'Mary'),
     });
 
-    const expectedOutput = `Player (${PLAYER_MARKER_X}) has won!`;
+    const expectedOutput = `Player ${winnerName} (${PLAYER_MARKER_X}) has won!`;
 
     game.play();
 
@@ -149,24 +151,28 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('The game can be won horizontally', () => {
+    const winnerName = 'John Doe';
+
     const game = new Game({
-      player1: createPlayerWithMoves(['00', '01', '02'], 'player 1'),
-      player2: createPlayerWithMoves(['12', '11'], 'player 2'),
+      player1: createPlayerWithMoves(['00', '01', '02'], winnerName),
+      player2: createPlayerWithMoves(['12', '11'], 'Mary'),
     });
 
-    const expectedOutput = `Player ${PLAYER_MARKER_X} has won!`;
+    const expectedOutput = `Player ${winnerName} (${PLAYER_MARKER_X}) has won!`;
 
     game.play();
     expect(game.displayGameState()).toBe(expectedOutput);
   });
 
   test('The game can be won diagonally (topLeft to bottomRight)', () => {
+    const winnerName = 'Mary';
+
     const game = new Game({
-      player1: createPlayerWithMoves(['01', '21', '02'], 'player 1'),
-      player2: createPlayerWithMoves(['00', '11', '22'], 'player 2'),
+      player1: createPlayerWithMoves(['01', '21', '02'], 'John Doe'),
+      player2: createPlayerWithMoves(['00', '11', '22'], winnerName),
     });
 
-    const expectedOutput = `Player ${PLAYER_MARKER_O} has won!`;
+    const expectedOutput = `Player ${winnerName} (${PLAYER_MARKER_O}) has won!`;
 
     game.play();
 
@@ -174,25 +180,14 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('The game can be won diagonally (topRight to bottomLeft)', () => {
+    const winnerName = 'Mary';
+
     const game = new Game({
-      player1: createPlayerWithMoves(['01', '21', '12'], 'player 1'),
-      player2: createPlayerWithMoves(['11', '02', '20'], 'player 2'),
+      player1: createPlayerWithMoves(['01', '21', '12'], 'John Doe'),
+      player2: createPlayerWithMoves(['11', '02', '20'], winnerName),
     });
 
-    const expectedOutput = `Player ${PLAYER_MARKER_O} has won!`;
-
-    game.play();
-
-    expect(game.displayGameState()).toBe(expectedOutput);
-  });
-
-  test('The game can be won diagonally (topRight to bottomLeft)', () => {
-    const game = new Game({
-      player1: createPlayerWithMoves(['20', '11', '02'], 'player 1'),
-      player2: createPlayerWithMoves(['21', '01'], 'player 2'),
-    });
-
-    const expectedOutput = `Player ${PLAYER_MARKER_X} has won!`;
+    const expectedOutput = `Player ${winnerName} (${PLAYER_MARKER_O}) has won!`;
 
     game.play();
 

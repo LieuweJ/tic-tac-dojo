@@ -26,9 +26,11 @@
 - R: Only make the 'makeMove method' a private method.
 - Game asks players to move until tie.
 - R: Refactor 'makeMove' to only make the move, move more logic to method 'Play'
+- Player should have a displayName
+- Game should communicate win with name of player, rather than X / O
 
 🚧 WIP
-- Game should communicate win with name of player, rather than X / O
+
 
 ⚠️ TODO
 - Game should communicate tie with name of player, rather than X / O

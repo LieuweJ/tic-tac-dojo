@@ -19,7 +19,7 @@ describe('Player should work', () => {
 
     const strategy = new TestStrategy(expectedOutput);
 
-    const player = new Player(strategy);
+    const player = new Player('John Doe', strategy);
 
     const board: Board = [
       [PLAYER_MARKER_X, EMPTY_CELL, PLAYER_MARKER_O],
@@ -28,6 +28,18 @@ describe('Player should work', () => {
     ];
 
     let result = player.move(board, PLAYER_MARKER_X);
+
+    expect(result).toBe(expectedOutput);
+  });
+
+  test('Player has a displayName a move', () => {
+    const strategy = new TestStrategy('00');
+
+    const expectedOutput = 'John Doe';
+
+    const player = new Player(expectedOutput, strategy);
+
+    let result = player.getDisplayName();
 
     expect(result).toBe(expectedOutput);
   });
