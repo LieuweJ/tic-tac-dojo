@@ -35,6 +35,10 @@ export class Game {
 
   private currentPlayer: PlayerMarker = PLAYER_MARKER_X;
 
+  play() {
+    throw Error('Not playing yet');
+  }
+
   nextMove(player: PlayerMarker, move: Move) {
     if (this.gameState !== GAME_STATES.IN_PROGRESS) {
       throw new Error(`No moves allowed. Current game.state: ${this.gameState}`);

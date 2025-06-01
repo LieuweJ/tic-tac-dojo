@@ -18,12 +18,12 @@
 
 - R: rename Player_1, Player_2 to something like PlayerMarker.
 - R: Use a type for the board, other than string 
+- R: Refactor index.ts: Rename file and class in file.
 
 🚧 WIP
-- R: Refactor Game.ts: Rename file and move types to different file.
+- Game asks players to move until won.
 
 ⚠️ TODO
-- Game asks players to move until won.
 - Game asks players to move until tie.
 
 🅿️ PARKED

@@ -197,4 +197,13 @@ describe('Tic-tac-toe game should work', () => {
 
     expect(game.displayGameState()).toBe(expectedOutput);
   });
+
+  test('The game asks players to play until won', () => {
+    const game = new Game();
+
+    const expectedOutput = `Player ${PLAYER_MARKER_X} has won!`;
+
+    game.play();
+    expect(game.displayGameState()).toBe(expectedOutput);
+  });
 });
