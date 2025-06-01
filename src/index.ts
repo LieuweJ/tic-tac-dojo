@@ -12,7 +12,7 @@ export type Player = typeof PLAYER_1 | typeof PLAYER_2;
 
 type GameState = (typeof GAME_STATES)[keyof typeof GAME_STATES];
 
-type Coords = {
+export type Coords = {
   row: number;
   col: number;
 };
