@@ -1,3 +1,5 @@
+import { Player, PlayerInterface } from '@/Player';
+
 export const EMPTY_CELL = '_';
 export const PLAYER_MARKER_X = 'X';
 export const PLAYER_MARKER_Y = 'O';
@@ -35,8 +37,24 @@ export class Game {
 
   private currentPlayer: PlayerMarker = PLAYER_MARKER_X;
 
+  private players: { X: PlayerInterface; O: PlayerInterface };
+
+  constructor({ player1, player2 }: { player1: PlayerInterface; player2: PlayerInterface }) {
+    this.players = {
+      X: player1,
+      O: player2,
+    };
+  }
+
   play() {
-    throw Error('Not playing yet');
+    while (this.gameState === GAME_STATES.IN_PROGRESS) {
+      const nextMarker = this.currentPlayer;
+      const nextPlayer = this.players[nextMarker];
+
+      this.nextMove(nextMarker, nextPlayer.move(this.board, this.currentPlayer));
+    }
+
+    return this.displayBoard();
   }
 
   nextMove(player: PlayerMarker, move: Move) {

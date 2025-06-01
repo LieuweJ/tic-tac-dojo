@@ -1,8 +1,36 @@
-import { GAME_STATES, PLAYER_MARKER_X, PLAYER_MARKER_Y, Game } from '@/Game';
+import { GAME_STATES, PLAYER_MARKER_X, PLAYER_MARKER_Y, Game, Move, PlayerMarker } from '@/Game';
+import { Player, PlayerInterface, PlayerStrategy } from '@/Player';
+
+class TestStrategyWithPredictedMoves implements PlayerStrategy {
+  private fifoMoves: Move[];
+  private playerName: string;
+
+  constructor(fifoMoves: Move[], playerMarker: string) {
+    this.fifoMoves = fifoMoves;
+    this.playerName = playerMarker;
+  }
+
+  public move(): Move {
+    const nextMove = this.fifoMoves.pop();
+
+    if (typeof nextMove === 'undefined') {
+      throw Error(`[TestStrategyWithPredictedMoves]: No more moves for ${this.playerName}`);
+    }
+
+    return nextMove;
+  }
+}
+
+function createPlayerWithMoves(moves: Move[], playerName: string): PlayerInterface {
+  return new Player(new TestStrategyWithPredictedMoves(moves, playerName));
+}
 
 describe('Tic-tac-toe game should work', () => {
   test('Empty board should be displayed', () => {
-    const game = new Game();
+    const game = new Game({
+      player1: createPlayerWithMoves([], 'player 1'),
+      player2: createPlayerWithMoves([], 'player 2'),
+    });
 
     const expectedOutput =
       `   |   |   ` + `\n-----------\n` + `   |   |   ` + `\n-----------\n` + `   |   |   `;
@@ -13,7 +41,10 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('A player can make a move', () => {
-    const game = new Game();
+    const game = new Game({
+      player1: createPlayerWithMoves([], 'player 1'),
+      player2: createPlayerWithMoves([], 'player 2'),
+    });
 
     const expectedOutput =
       `   |   |   ` + `\n-----------\n` + `   |   | X ` + `\n-----------\n` + `   |   |   `;
@@ -26,7 +57,10 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('Player cannot make a move which is outside of the board (vertically)', () => {
-    const game = new Game();
+    const game = new Game({
+      player1: createPlayerWithMoves([], 'player 1'),
+      player2: createPlayerWithMoves([], 'player 2'),
+    });
 
     // @ts-expect-error player passes an invalid 'move', to test if the Javascript guard fails
     expect(() => game.nextMove(PLAYER_MARKER_X, '42')).toThrow(
@@ -35,7 +69,10 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('Player cannot make a move which is outside of the board (horizontally)', () => {
-    const game = new Game();
+    const game = new Game({
+      player1: createPlayerWithMoves([], 'player 1'),
+      player2: createPlayerWithMoves([], 'player 2'),
+    });
 
     // @ts-expect-error player passes an invalid 'move', to test if the Javascript guard fails
     expect(() => game.nextMove(PLAYER_MARKER_X, '24')).toThrow(
@@ -44,7 +81,10 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('A move can only consist of a string with 2 numbers', () => {
-    const game = new Game();
+    const game = new Game({
+      player1: createPlayerWithMoves([], 'player 1'),
+      player2: createPlayerWithMoves([], 'player 2'),
+    });
 
     const incorrectMove = '110';
 
@@ -55,7 +95,10 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('Not allowed to make a move on a square which already is not empty,', () => {
-    const game = new Game();
+    const game = new Game({
+      player1: createPlayerWithMoves([], 'player 1'),
+      player2: createPlayerWithMoves([], 'player 2'),
+    });
 
     const move = '00';
 
@@ -69,7 +112,10 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('The next player can be asked to make a move', () => {
-    const game = new Game();
+    const game = new Game({
+      player1: createPlayerWithMoves([], 'player 1'),
+      player2: createPlayerWithMoves([], 'player 2'),
+    });
 
     game.nextMove(PLAYER_MARKER_X, '12');
     const expectedOutput = `Player ${PLAYER_MARKER_Y} is asked to make a move`;
@@ -78,7 +124,10 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('A move cannot be made when a game is in progress', () => {
-    const game = new Game();
+    const game = new Game({
+      player1: createPlayerWithMoves([], 'player 1'),
+      player2: createPlayerWithMoves([], 'player 2'),
+    });
 
     game.nextMove(PLAYER_MARKER_X, '00');
     game.nextMove(PLAYER_MARKER_Y, '21');
@@ -95,7 +144,10 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('Move needs to be made by the next player', () => {
-    const game = new Game();
+    const game = new Game({
+      player1: createPlayerWithMoves([], 'player 1'),
+      player2: createPlayerWithMoves([], 'player 2'),
+    });
 
     game.nextMove(PLAYER_MARKER_X, '00');
 
@@ -109,7 +161,10 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('The game can be won vertically', () => {
-    const game = new Game();
+    const game = new Game({
+      player1: createPlayerWithMoves([], 'player 1'),
+      player2: createPlayerWithMoves([], 'player 2'),
+    });
 
     game.nextMove(PLAYER_MARKER_X, '00');
     game.nextMove(PLAYER_MARKER_Y, '02');
@@ -123,7 +178,10 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('The game can be won horizontally', () => {
-    const game = new Game();
+    const game = new Game({
+      player1: createPlayerWithMoves([], 'player 1'),
+      player2: createPlayerWithMoves([], 'player 2'),
+    });
 
     game.nextMove(PLAYER_MARKER_X, '00');
     game.nextMove(PLAYER_MARKER_Y, '12');
@@ -137,7 +195,10 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('The game can be won diagonally (topLeft to bottomRight)', () => {
-    const game = new Game();
+    const game = new Game({
+      player1: createPlayerWithMoves([], 'player 1'),
+      player2: createPlayerWithMoves([], 'player 2'),
+    });
 
     game.nextMove(PLAYER_MARKER_X, '00');
     game.nextMove(PLAYER_MARKER_Y, '01');
@@ -151,7 +212,10 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('The game can be won diagonally (topRight to bottomLeft)', () => {
-    const game = new Game();
+    const game = new Game({
+      player1: createPlayerWithMoves([], 'player 1'),
+      player2: createPlayerWithMoves([], 'player 2'),
+    });
 
     game.nextMove(PLAYER_MARKER_X, '20');
     game.nextMove(PLAYER_MARKER_Y, '01');
@@ -165,7 +229,10 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('The game can be won diagonally (topRight to bottomLeft)', () => {
-    const game = new Game();
+    const game = new Game({
+      player1: createPlayerWithMoves([], 'player 1'),
+      player2: createPlayerWithMoves([], 'player 2'),
+    });
 
     game.nextMove(PLAYER_MARKER_X, '20');
     game.nextMove(PLAYER_MARKER_Y, '01');
@@ -179,7 +246,10 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('A tie can be determined', () => {
-    const game = new Game();
+    const game = new Game({
+      player1: createPlayerWithMoves([], 'player 1'),
+      player2: createPlayerWithMoves([], 'player 2'),
+    });
 
     game.nextMove(PLAYER_MARKER_X, '00');
     game.nextMove(PLAYER_MARKER_Y, '01');
@@ -199,7 +269,12 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('The game asks players to play until won', () => {
-    const game = new Game();
+    const player1 = new Player(
+      new TestStrategyWithPredictedMoves(['20', '11', '02'], PLAYER_MARKER_X)
+    );
+
+    const player2 = new Player(new TestStrategyWithPredictedMoves(['21', '01'], PLAYER_MARKER_Y));
+    const game = new Game({ player1, player2 });
 
     const expectedOutput = `Player ${PLAYER_MARKER_X} has won!`;
 
