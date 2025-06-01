@@ -1,2 +1,2 @@
-- rename Player_1, Player_2 to something like PlayerMarker.
+
 - Use a type for the board, other than string

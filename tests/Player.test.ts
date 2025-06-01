@@ -1,5 +1,5 @@
 import { Player, PlayerStrategy } from '@/Player';
-import { EMPTY_CELL, PLAYER_1, PLAYER_2, Coords } from '@/index';
+import { EMPTY_CELL, PLAYER_MARKER_X, PLAYER_MARKER_Y, Coords } from '@/index';
 
 const TestStrategy = class TestStrategy implements PlayerStrategy {
   expectedMove: Coords;
@@ -25,12 +25,12 @@ describe('Player should work', () => {
     const player = new Player(strategy);
 
     const board = [
-      [PLAYER_1, EMPTY_CELL, PLAYER_2],
-      [PLAYER_1, EMPTY_CELL, PLAYER_1],
+      [PLAYER_MARKER_X, EMPTY_CELL, PLAYER_MARKER_Y],
+      [PLAYER_MARKER_X, EMPTY_CELL, PLAYER_MARKER_X],
       [EMPTY_CELL, EMPTY_CELL, EMPTY_CELL],
     ];
 
-    let result = player.move(board, PLAYER_1);
+    let result = player.move(board, PLAYER_MARKER_X);
 
     expect(result).toBe(expectedOutput);
   });

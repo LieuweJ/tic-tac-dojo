@@ -1,6 +1,6 @@
 export const EMPTY_CELL = '_';
-export const PLAYER_1 = 'X';
-export const PLAYER_2 = 'O';
+export const PLAYER_MARKER_X = 'X';
+export const PLAYER_MARKER_Y = 'O';
 
 export const GAME_STATES = {
   IN_PROGRESS: 'IN_PROGRESS',
@@ -8,7 +8,7 @@ export const GAME_STATES = {
   TIE: 'TIE',
 };
 
-export type Player = typeof PLAYER_1 | typeof PLAYER_2;
+export type PlayerMarker = typeof PLAYER_MARKER_X | typeof PLAYER_MARKER_Y;
 
 type GameState = (typeof GAME_STATES)[keyof typeof GAME_STATES];
 
@@ -28,9 +28,9 @@ export class TicTacDoJo {
 
   private gameState: GameState = GAME_STATES.IN_PROGRESS;
 
-  private currentPlayer: Player = PLAYER_1;
+  private currentPlayer: PlayerMarker = PLAYER_MARKER_X;
 
-  nextMove(player: Player, move: Move) {
+  nextMove(player: PlayerMarker, move: Move) {
     if (this.gameState !== GAME_STATES.IN_PROGRESS) {
       throw new Error(`No moves allowed. Current game.state: ${this.gameState}`);
     }
@@ -53,7 +53,7 @@ export class TicTacDoJo {
     this.updateGameState();
 
     if (this.gameState === GAME_STATES.IN_PROGRESS) {
-      this.currentPlayer = player === PLAYER_1 ? PLAYER_2 : PLAYER_1;
+      this.currentPlayer = player === PLAYER_MARKER_X ? PLAYER_MARKER_Y : PLAYER_MARKER_X;
     }
   }
 

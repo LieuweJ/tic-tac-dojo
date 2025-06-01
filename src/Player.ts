@@ -1,4 +1,4 @@
-import { EMPTY_CELL, Move, Coords, Player as PlayerMarker } from '@/index';
+import { EMPTY_CELL, Move, Coords, PlayerMarker as PlayerMarker } from '@/index';
 
 export interface PlayerStrategy {
   move: (board: string[][], playerMarker: PlayerMarker) => Coords;
