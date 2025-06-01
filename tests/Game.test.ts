@@ -57,15 +57,18 @@ describe('Tic-tac-toe game should work', () => {
   // });
 
   test('Player cannot make a move which is outside of the board (vertically)', () => {
+    const expectedPlayerName = 'Johnny Crash';
     const game = new Game({
       // @ts-expect-error player passes an invalid 'move', to test if the Javascript guard fails
-      player1: createPlayerWithMoves(['42'], 'player 1'),
+      player1: createPlayerWithMoves(['42'], expectedPlayerName),
       player2: createPlayerWithMoves([], 'player 2'),
     });
 
     expect(() => game.play()).toThrow(new Error(`Move has incorrect row: 4`));
 
-    expect(game.displayGameState()).toBe(`Player X is asked to make a move`);
+    expect(game.displayGameState()).toBe(
+      `It is player ${expectedPlayerName}'s (playing with ${PLAYER_MARKER_X}) turn`
+    );
   });
 
   test('Player cannot make a move which is outside of the board (horizontally)', () => {
