@@ -23,13 +23,12 @@
 - R: Refactor index.ts: Rename file and class in file.
 
 - Game asks players to move until won.
-
-
+- R: Only make the 'makeMove method' a private method.
+- Game asks players to move until tie.
 
 🚧 WIP
-- R: Only make the 'makeMove method' a private method.
+
 
 ⚠️ TODO
-- Game asks players to move until tie.
 
 🅿️ PARKED

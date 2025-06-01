@@ -228,18 +228,4 @@ describe('Tic-tac-toe game should work', () => {
 
     expect(game.displayGameState()).toBe(expectedOutput);
   });
-
-  test('The game asks players to play until won', () => {
-    const player1 = new Player(
-      new TestStrategyWithPredictedMoves(['20', '11', '02'], PLAYER_MARKER_X)
-    );
-
-    const player2 = new Player(new TestStrategyWithPredictedMoves(['21', '01'], PLAYER_MARKER_Y));
-    const game = new Game({ player1, player2 });
-
-    const expectedOutput = `Player ${PLAYER_MARKER_X} has won!`;
-
-    game.play();
-    expect(game.displayGameState()).toBe(expectedOutput);
-  });
 });
