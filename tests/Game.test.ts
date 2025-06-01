@@ -1,8 +1,8 @@
-import { GAME_STATES, PLAYER_MARKER_X, PLAYER_MARKER_Y, TicTacDoJo } from '@/index';
+import { GAME_STATES, PLAYER_MARKER_X, PLAYER_MARKER_Y, Game } from '@/Game';
 
 describe('Tic-tac-toe game should work', () => {
   test('Empty board should be displayed', () => {
-    const game = new TicTacDoJo();
+    const game = new Game();
 
     const expectedOutput =
       `   |   |   ` + `\n-----------\n` + `   |   |   ` + `\n-----------\n` + `   |   |   `;
@@ -13,7 +13,7 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('A player can make a move', () => {
-    const game = new TicTacDoJo();
+    const game = new Game();
 
     const expectedOutput =
       `   |   |   ` + `\n-----------\n` + `   |   | X ` + `\n-----------\n` + `   |   |   `;
@@ -26,7 +26,7 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('Player cannot make a move which is outside of the board (vertically)', () => {
-    const game = new TicTacDoJo();
+    const game = new Game();
 
     // @ts-expect-error player passes an invalid 'move', to test if the Javascript guard fails
     expect(() => game.nextMove(PLAYER_MARKER_X, '42')).toThrow(
@@ -35,7 +35,7 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('Player cannot make a move which is outside of the board (horizontally)', () => {
-    const game = new TicTacDoJo();
+    const game = new Game();
 
     // @ts-expect-error player passes an invalid 'move', to test if the Javascript guard fails
     expect(() => game.nextMove(PLAYER_MARKER_X, '24')).toThrow(
@@ -44,7 +44,7 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('A move can only consist of a string with 2 numbers', () => {
-    const game = new TicTacDoJo();
+    const game = new Game();
 
     const incorrectMove = '110';
 
@@ -55,7 +55,7 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('Not allowed to make a move on a square which already is not empty,', () => {
-    const game = new TicTacDoJo();
+    const game = new Game();
 
     const move = '00';
 
@@ -69,7 +69,7 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('The next player can be asked to make a move', () => {
-    const game = new TicTacDoJo();
+    const game = new Game();
 
     game.nextMove(PLAYER_MARKER_X, '12');
     const expectedOutput = `Player ${PLAYER_MARKER_Y} is asked to make a move`;
@@ -78,7 +78,7 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('A move cannot be made when a game is in progress', () => {
-    const game = new TicTacDoJo();
+    const game = new Game();
 
     game.nextMove(PLAYER_MARKER_X, '00');
     game.nextMove(PLAYER_MARKER_Y, '21');
@@ -95,7 +95,7 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('Move needs to be made by the next player', () => {
-    const game = new TicTacDoJo();
+    const game = new Game();
 
     game.nextMove(PLAYER_MARKER_X, '00');
 
@@ -109,7 +109,7 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('The game can be won vertically', () => {
-    const game = new TicTacDoJo();
+    const game = new Game();
 
     game.nextMove(PLAYER_MARKER_X, '00');
     game.nextMove(PLAYER_MARKER_Y, '02');
@@ -123,7 +123,7 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('The game can be won horizontally', () => {
-    const game = new TicTacDoJo();
+    const game = new Game();
 
     game.nextMove(PLAYER_MARKER_X, '00');
     game.nextMove(PLAYER_MARKER_Y, '12');
@@ -137,7 +137,7 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('The game can be won diagonally (topLeft to bottomRight)', () => {
-    const game = new TicTacDoJo();
+    const game = new Game();
 
     game.nextMove(PLAYER_MARKER_X, '00');
     game.nextMove(PLAYER_MARKER_Y, '01');
@@ -151,7 +151,7 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('The game can be won diagonally (topRight to bottomLeft)', () => {
-    const game = new TicTacDoJo();
+    const game = new Game();
 
     game.nextMove(PLAYER_MARKER_X, '20');
     game.nextMove(PLAYER_MARKER_Y, '01');
@@ -165,7 +165,7 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('The game can be won diagonally (topRight to bottomLeft)', () => {
-    const game = new TicTacDoJo();
+    const game = new Game();
 
     game.nextMove(PLAYER_MARKER_X, '20');
     game.nextMove(PLAYER_MARKER_Y, '01');
@@ -179,7 +179,7 @@ describe('Tic-tac-toe game should work', () => {
   });
 
   test('A tie can be determined', () => {
-    const game = new TicTacDoJo();
+    const game = new Game();
 
     game.nextMove(PLAYER_MARKER_X, '00');
     game.nextMove(PLAYER_MARKER_Y, '01');

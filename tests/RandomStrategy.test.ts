@@ -1,4 +1,4 @@
-import { Board, EMPTY_CELL, PLAYER_MARKER_X, PLAYER_MARKER_Y } from '@/index';
+import { Board, EMPTY_CELL, PLAYER_MARKER_X, PLAYER_MARKER_Y } from '@/Game';
 import { RandomStrategy } from '@/RandomStrategy';
 
 describe('RandomStrategy should work', () => {

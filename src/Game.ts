@@ -24,7 +24,7 @@ export type Move = (typeof ALL_BOARD_MOVES)[number];
 type BoardCell = typeof EMPTY_CELL | PlayerMarker;
 export type Board = BoardCell[][];
 
-export class TicTacDoJo {
+export class Game {
   private board: Board = [
     [EMPTY_CELL, EMPTY_CELL, EMPTY_CELL],
     [EMPTY_CELL, EMPTY_CELL, EMPTY_CELL],

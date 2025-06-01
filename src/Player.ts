@@ -1,4 +1,4 @@
-import { Board, Move, PlayerMarker as PlayerMarker } from '@/index';
+import { Board, Move, PlayerMarker as PlayerMarker } from '@/Game';
 
 export interface PlayerStrategy {
   move: (board: Board, playerMarker: PlayerMarker) => Move;

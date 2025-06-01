@@ -1,5 +1,5 @@
 import { Player, PlayerStrategy } from '@/Player';
-import { EMPTY_CELL, PLAYER_MARKER_X, PLAYER_MARKER_Y, Coords, Board, Move } from '@/index';
+import { EMPTY_CELL, PLAYER_MARKER_X, PLAYER_MARKER_Y, Coords, Board, Move } from '@/Game';
 
 const TestStrategy = class TestStrategy implements PlayerStrategy {
   expectedMove: Move;

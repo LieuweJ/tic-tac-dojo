@@ -20,8 +20,10 @@
 - R: Use a type for the board, other than string 
 
 🚧 WIP
+- R: Refactor Game.ts: Rename file and move types to different file.
 
 ⚠️ TODO
-- Game asks players to move until tie or won.
+- Game asks players to move until won.
+- Game asks players to move until tie.
 
 🅿️ PARKED
