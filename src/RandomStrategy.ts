@@ -1,7 +1,7 @@
 import { PlayerStrategy } from '@/Player';
 import { Board, PlayerMarker, Move } from '@/index';
 
-class RandomStrategy implements PlayerStrategy {
+export class RandomStrategy implements PlayerStrategy {
   public move(board: Board, personalMarker: PlayerMarker): Move {
     return '00';
     //     const fallbackMove = {

@@ -19,7 +19,7 @@
 - R: Use a type for the board, other than string 
 
 🚧 WIP
-- Player can use a strategy called "Random"
+- Player can use a strategy called "Random". This random strategy returns a move which is on an empty cell on the board.
 
 ⚠️ TODO
 - Game asks players to move until tie or won.
