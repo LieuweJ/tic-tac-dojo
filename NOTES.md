@@ -15,10 +15,11 @@
 - Tie can be determined
 - Player can make a move
 
-- rename Player_1, Player_2 to something like PlayerMarker.
+- R: rename Player_1, Player_2 to something like PlayerMarker.
+- R: Use a type for the board, other than string 
 
 🚧 WIP
-- Use a type for the board, other than string
+
 
 ⚠️ TODO
 - Player can use a strategy

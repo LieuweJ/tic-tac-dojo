@@ -1,3 +1,5 @@
+import { Player } from '@/Player';
+
 export const EMPTY_CELL = '_';
 export const PLAYER_MARKER_X = 'X';
 export const PLAYER_MARKER_Y = 'O';
@@ -19,8 +21,11 @@ export type Coords = {
 
 export type Move = '00' | '01' | '02' | '10' | '11' | '12' | '20' | '21' | '22';
 
+type BoardCell = typeof EMPTY_CELL | PlayerMarker;
+export type Board = BoardCell[][];
+
 export class TicTacDoJo {
-  private board: string[][] = [
+  private board: Board = [
     [EMPTY_CELL, EMPTY_CELL, EMPTY_CELL],
     [EMPTY_CELL, EMPTY_CELL, EMPTY_CELL],
     [EMPTY_CELL, EMPTY_CELL, EMPTY_CELL],

@@ -1,7 +1,7 @@
-import { EMPTY_CELL, Move, Coords, PlayerMarker as PlayerMarker } from '@/index';
+import { EMPTY_CELL, Board, Move, Coords, PlayerMarker as PlayerMarker } from '@/index';
 
 export interface PlayerStrategy {
-  move: (board: string[][], playerMarker: PlayerMarker) => Coords;
+  move: (board: Board, playerMarker: PlayerMarker) => Coords;
 }
 
 export class Player {
@@ -10,13 +10,13 @@ export class Player {
     this.strategy = strategy;
   }
 
-  public move(board: string[][], currentMarker: PlayerMarker): Coords {
+  public move(board: Board, currentMarker: PlayerMarker): Coords {
     return this.strategy.move(board, currentMarker);
   }
 }
 
 // class RandomStrategy implements Strategy {
-//   public move(board: string[][], personalMarker: PlayerMarker): Coords {
+//   public move(board: Board, personalMarker: PlayerMarker): Coords {
 //     const fallbackMove = {
 //       row: 0,
 //       col: 0,

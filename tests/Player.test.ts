@@ -1,5 +1,5 @@
 import { Player, PlayerStrategy } from '@/Player';
-import { EMPTY_CELL, PLAYER_MARKER_X, PLAYER_MARKER_Y, Coords } from '@/index';
+import { EMPTY_CELL, PLAYER_MARKER_X, PLAYER_MARKER_Y, Coords, Board } from '@/index';
 
 const TestStrategy = class TestStrategy implements PlayerStrategy {
   expectedMove: Coords;
@@ -24,7 +24,7 @@ describe('Player should work', () => {
 
     const player = new Player(strategy);
 
-    const board = [
+    const board: Board = [
       [PLAYER_MARKER_X, EMPTY_CELL, PLAYER_MARKER_Y],
       [PLAYER_MARKER_X, EMPTY_CELL, PLAYER_MARKER_X],
       [EMPTY_CELL, EMPTY_CELL, EMPTY_CELL],
