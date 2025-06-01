@@ -30,9 +30,8 @@
 - Game should communicate win with name of player, rather than X / O
 
 🚧 WIP
-
+- Game should communicate 'ask next move' with name of player, rather than X / O
 
 ⚠️ TODO
-- Game should communicate tie with name of player, rather than X / O
-- 
+
 🅿️ PARKED

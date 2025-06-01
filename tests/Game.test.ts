@@ -64,6 +64,8 @@ describe('Tic-tac-toe game should work', () => {
     });
 
     expect(() => game.play()).toThrow(new Error(`Move has incorrect row: 4`));
+
+    expect(game.displayGameState()).toBe(`Player X is asked to make a move`);
   });
 
   test('Player cannot make a move which is outside of the board (horizontally)', () => {

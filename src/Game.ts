@@ -240,6 +240,6 @@ export class Game {
       return `Game is a tie!`;
     }
 
-    return `Player ${this.currentPlayerMarker} is asked to make a move`;
+    return `It is player ${this.players[this.currentPlayerMarker].getDisplayName()}'s (playing with ${this.currentPlayerMarker}) turn`;
   }
 }
