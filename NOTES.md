@@ -13,15 +13,21 @@
 - Move cannot be made on a square which is already taken.
 - A move cannot be made when the game is not in progress
 - Tie can be determined
-- Player can make a move
-- Player can use a strategy called "Random". This random strategy returns a move which is on an empty cell on the board.
 
 - R: rename Player_1, Player_2 to something like PlayerMarker.
-- R: Use a type for the board, other than string 
+- R: Use a type for the board, other than string
+
+- Player can make a move
+- Player can use a strategy called "Random". This random strategy returns a move which is on an empty cell on the board.
+ 
 - R: Refactor index.ts: Rename file and class in file.
 
-🚧 WIP
 - Game asks players to move until won.
+
+
+
+🚧 WIP
+- R: Only make the 'makeMove method' a private method.
 
 ⚠️ TODO
 - Game asks players to move until tie.

@@ -1,4 +1,4 @@
-import { Player, PlayerInterface } from '@/Player';
+import { PlayerInterface } from '@/Player';
 
 export const EMPTY_CELL = '_';
 export const PLAYER_MARKER_X = 'X';
@@ -57,7 +57,7 @@ export class Game {
     return this.displayBoard();
   }
 
-  nextMove(player: PlayerMarker, move: Move) {
+  private nextMove(player: PlayerMarker, move: Move) {
     if (this.gameState !== GAME_STATES.IN_PROGRESS) {
       throw new Error(`No moves allowed. Current game.state: ${this.gameState}`);
     }
@@ -72,7 +72,7 @@ export class Game {
 
     if (this.board[coords.row][coords.col] !== EMPTY_CELL) {
       throw new Error(
-        `Player ${player} wants to play move ${move}. This move is already taken on the board. Current board: \n${this.displayBoard()}`
+        `Player ${player} wants to play move ${move}. This move is already taken on the board.`
       );
     }
 
