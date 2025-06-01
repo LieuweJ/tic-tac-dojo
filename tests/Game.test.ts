@@ -22,7 +22,7 @@ class TestStrategyWithPredictedMoves implements PlayerStrategy {
 }
 
 function createPlayerWithMoves(moves: Move[], playerName: string): PlayerInterface {
-  return new Player(new TestStrategyWithPredictedMoves(moves, playerName));
+  return new Player(playerName, new TestStrategyWithPredictedMoves(moves, playerName));
 }
 
 describe('Tic-tac-toe game should work', () => {
@@ -141,7 +141,7 @@ describe('Tic-tac-toe game should work', () => {
       player2: createPlayerWithMoves(['02', '01'], 'player 2'),
     });
 
-    const expectedOutput = `Player ${PLAYER_MARKER_X} has won!`;
+    const expectedOutput = `Player (${PLAYER_MARKER_X}) has won!`;
 
     game.play();
 

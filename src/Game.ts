@@ -233,7 +233,7 @@ export class Game {
 
   displayGameState(): string {
     if (this.gameState === GAME_STATES.WON) {
-      return `Player ${this.currentPlayerMarker} has won!`;
+      return `Player ${this.players[this.currentPlayerMarker].getDisplayName()} (${this.currentPlayerMarker}) has won!`;
     }
 
     if (this.gameState === GAME_STATES.TIE) {

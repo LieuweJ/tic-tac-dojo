@@ -25,11 +25,12 @@
 - Game asks players to move until won.
 - R: Only make the 'makeMove method' a private method.
 - Game asks players to move until tie.
-
-🚧 WIP
 - R: Refactor 'makeMove' to only make the move, move more logic to method 'Play'
 
-⚠️ TODO
-- Game should communicate with name of player, rather than X / O
+🚧 WIP
+- Game should communicate win with name of player, rather than X / O
 
+⚠️ TODO
+- Game should communicate tie with name of player, rather than X / O
+- 
 🅿️ PARKED
