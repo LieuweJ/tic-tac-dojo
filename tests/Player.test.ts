@@ -1,24 +1,21 @@
 import { Player, PlayerStrategy } from '@/Player';
-import { EMPTY_CELL, PLAYER_MARKER_X, PLAYER_MARKER_Y, Coords, Board } from '@/index';
+import { EMPTY_CELL, PLAYER_MARKER_X, PLAYER_MARKER_Y, Coords, Board, Move } from '@/index';
 
 const TestStrategy = class TestStrategy implements PlayerStrategy {
-  expectedMove: Coords;
+  expectedMove: Move;
 
-  constructor(expectedMove: Coords) {
+  constructor(expectedMove: Move) {
     this.expectedMove = expectedMove;
   }
 
-  move(): Coords {
+  move(): Move {
     return this.expectedMove;
   }
 };
 
 describe('Player should work', () => {
   test('Player makes a move', () => {
-    const expectedOutput = {
-      row: 0,
-      col: 0,
-    };
+    const expectedOutput = '00';
 
     const strategy = new TestStrategy(expectedOutput);
 

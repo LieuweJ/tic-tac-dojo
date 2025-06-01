@@ -19,10 +19,9 @@
 - R: Use a type for the board, other than string 
 
 🚧 WIP
-
+- Player can use a strategy called "Random"
 
 ⚠️ TODO
-- Player can use a strategy
 - Game asks players to move until tie or won.
 
 🅿️ PARKED
