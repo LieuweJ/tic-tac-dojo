@@ -27,8 +27,9 @@
 - Game asks players to move until tie.
 
 🚧 WIP
-
+- R: Refactor 'makeMove' to only make the move, move more logic to method 'Play'
 
 ⚠️ TODO
+- Game should communicate with name of player, rather than X / O
 
 🅿️ PARKED

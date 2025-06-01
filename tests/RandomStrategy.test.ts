@@ -1,10 +1,10 @@
-import { Board, EMPTY_CELL, PLAYER_MARKER_X, PLAYER_MARKER_Y } from '@/Game';
+import { Board, EMPTY_CELL, PLAYER_MARKER_X, PLAYER_MARKER_O } from '@/Game';
 import { RandomStrategy } from '@/RandomStrategy';
 
 describe('RandomStrategy should work', () => {
   test('RandomStrategy returns a move which is on an empty cell on the board.', () => {
     const board: Board = [
-      [PLAYER_MARKER_X, EMPTY_CELL, PLAYER_MARKER_Y],
+      [PLAYER_MARKER_X, EMPTY_CELL, PLAYER_MARKER_O],
       [PLAYER_MARKER_X, EMPTY_CELL, PLAYER_MARKER_X],
       [EMPTY_CELL, EMPTY_CELL, EMPTY_CELL],
     ];

@@ -2,7 +2,7 @@ import { PlayerInterface } from '@/Player';
 
 export const EMPTY_CELL = '_';
 export const PLAYER_MARKER_X = 'X';
-export const PLAYER_MARKER_Y = 'O';
+export const PLAYER_MARKER_O = 'O';
 
 export const GAME_STATES = {
   IN_PROGRESS: 'IN_PROGRESS',
@@ -10,7 +10,7 @@ export const GAME_STATES = {
   TIE: 'TIE',
 };
 
-export type PlayerMarker = typeof PLAYER_MARKER_X | typeof PLAYER_MARKER_Y;
+export type PlayerMarker = typeof PLAYER_MARKER_X | typeof PLAYER_MARKER_O;
 
 type GameState = (typeof GAME_STATES)[keyof typeof GAME_STATES];
 
@@ -35,7 +35,7 @@ export class Game {
 
   private gameState: GameState = GAME_STATES.IN_PROGRESS;
 
-  private currentPlayer: PlayerMarker = PLAYER_MARKER_X;
+  private currentPlayerMarker: PlayerMarker = PLAYER_MARKER_X;
 
   private players: { X: PlayerInterface; O: PlayerInterface };
 
@@ -48,40 +48,38 @@ export class Game {
 
   play() {
     while (this.gameState === GAME_STATES.IN_PROGRESS) {
-      const nextMarker = this.currentPlayer;
-      const nextPlayer = this.players[nextMarker];
+      const currentPlayer = this.players[this.currentPlayerMarker];
 
-      this.nextMove(nextMarker, nextPlayer.move(this.board, this.currentPlayer));
+      this.updateBoard(currentPlayer.move(this.board, this.currentPlayerMarker));
+      this.updateGameState();
+
+      this.updateCurrentPlayerMarker();
     }
 
     return this.displayBoard();
   }
 
-  private nextMove(player: PlayerMarker, move: Move) {
+  private updateCurrentPlayerMarker() {
+    if (this.gameState === GAME_STATES.IN_PROGRESS) {
+      this.currentPlayerMarker =
+        this.currentPlayerMarker === PLAYER_MARKER_X ? PLAYER_MARKER_O : PLAYER_MARKER_X;
+    }
+  }
+
+  private updateBoard(move: Move) {
     if (this.gameState !== GAME_STATES.IN_PROGRESS) {
       throw new Error(`No moves allowed. Current game.state: ${this.gameState}`);
-    }
-
-    if (player !== this.currentPlayer) {
-      throw new Error(
-        `Player ${player} makes move ${move} whilst it is the turn of ${this.currentPlayer}`
-      );
     }
 
     const coords = this.getCoords(move);
 
     if (this.board[coords.row][coords.col] !== EMPTY_CELL) {
       throw new Error(
-        `Player ${player} wants to play move ${move}. This move is already taken on the board.`
+        `Player ${this.currentPlayerMarker} wants to play move ${move}. This move is already taken on the board.`
       );
     }
 
-    this.board[coords.row][coords.col] = player;
-    this.updateGameState();
-
-    if (this.gameState === GAME_STATES.IN_PROGRESS) {
-      this.currentPlayer = player === PLAYER_MARKER_X ? PLAYER_MARKER_Y : PLAYER_MARKER_X;
-    }
+    this.board[coords.row][coords.col] = this.currentPlayerMarker;
   }
 
   private updateGameState() {
@@ -235,13 +233,13 @@ export class Game {
 
   displayGameState(): string {
     if (this.gameState === GAME_STATES.WON) {
-      return `Player ${this.currentPlayer} has won!`;
+      return `Player ${this.currentPlayerMarker} has won!`;
     }
 
     if (this.gameState === GAME_STATES.TIE) {
       return `Game is a tie!`;
     }
 
-    return `Player ${this.currentPlayer} is asked to make a move`;
+    return `Player ${this.currentPlayerMarker} is asked to make a move`;
   }
 }

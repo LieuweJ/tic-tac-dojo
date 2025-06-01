@@ -1,4 +1,4 @@
-import { PLAYER_MARKER_X, PLAYER_MARKER_Y, Game, Move } from '@/Game';
+import { PLAYER_MARKER_X, PLAYER_MARKER_O, Game, Move } from '@/Game';
 import { Player, PlayerInterface, PlayerStrategy } from '@/Player';
 
 class TestStrategyWithPredictedMoves implements PlayerStrategy {
@@ -98,7 +98,7 @@ describe('Tic-tac-toe game should work', () => {
 
     expect(() => game.play()).toThrow(
       new Error(
-        `Player ${PLAYER_MARKER_Y} wants to play move ${sameMove}. This move is already taken on the board.`
+        `Player ${PLAYER_MARKER_O} wants to play move ${sameMove}. This move is already taken on the board.`
       )
     );
   });
@@ -135,23 +135,6 @@ describe('Tic-tac-toe game should work', () => {
     //   );
   });
 
-  test.skip('Move needs to be made by the next player', () => {
-    // const game = new Game({
-    //   player1: createPlayerWithMoves([], 'player 1'),
-    //   player2: createPlayerWithMoves([], 'player 2'),
-    // });
-    //
-    // game._nextMove(PLAYER_MARKER_X, '00');
-    //
-    // const nextMove = '10';
-    //
-    // expect(() => game._nextMove(PLAYER_MARKER_X, nextMove)).toThrow(
-    //   new Error(
-    //     `Player ${PLAYER_MARKER_X} makes move ${nextMove} whilst it is the turn of ${PLAYER_MARKER_Y}`
-    //   )
-    // );
-  });
-
   test('The game can be won vertically', () => {
     const game = new Game({
       player1: createPlayerWithMoves(['00', '10', '20'], 'player 1'),
@@ -183,7 +166,7 @@ describe('Tic-tac-toe game should work', () => {
       player2: createPlayerWithMoves(['00', '11', '22'], 'player 2'),
     });
 
-    const expectedOutput = `Player ${PLAYER_MARKER_Y} has won!`;
+    const expectedOutput = `Player ${PLAYER_MARKER_O} has won!`;
 
     game.play();
 
@@ -196,7 +179,7 @@ describe('Tic-tac-toe game should work', () => {
       player2: createPlayerWithMoves(['11', '02', '20'], 'player 2'),
     });
 
-    const expectedOutput = `Player ${PLAYER_MARKER_Y} has won!`;
+    const expectedOutput = `Player ${PLAYER_MARKER_O} has won!`;
 
     game.play();
 
