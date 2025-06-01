@@ -1,5 +1,3 @@
-import { Player } from '@/Player';
-
 export const EMPTY_CELL = '_';
 export const PLAYER_MARKER_X = 'X';
 export const PLAYER_MARKER_Y = 'O';
@@ -19,7 +17,9 @@ export type Coords = {
   col: number;
 };
 
-export type Move = '00' | '01' | '02' | '10' | '11' | '12' | '20' | '21' | '22';
+export const ALL_BOARD_MOVES = ['00', '01', '02', '10', '11', '12', '20', '21', '22'] as const;
+
+export type Move = (typeof ALL_BOARD_MOVES)[number];
 
 type BoardCell = typeof EMPTY_CELL | PlayerMarker;
 export type Board = BoardCell[][];

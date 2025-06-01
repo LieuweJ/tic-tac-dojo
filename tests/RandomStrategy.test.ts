@@ -1,4 +1,4 @@
-import { Board, EMPTY_CELL, Move, PLAYER_MARKER_X, PLAYER_MARKER_Y } from '@/index';
+import { Board, EMPTY_CELL, PLAYER_MARKER_X, PLAYER_MARKER_Y } from '@/index';
 import { RandomStrategy } from '@/RandomStrategy';
 
 describe('RandomStrategy should work', () => {
@@ -13,7 +13,7 @@ describe('RandomStrategy should work', () => {
 
     const emptyMovesOnBoard = /01|11|20|21|22/;
 
-    let result = strategy.move(board, PLAYER_MARKER_X);
+    let result = strategy.move(board);
 
     expect(result).toMatch(emptyMovesOnBoard);
   });

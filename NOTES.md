@@ -14,12 +14,12 @@
 - A move cannot be made when the game is not in progress
 - Tie can be determined
 - Player can make a move
+- Player can use a strategy called "Random". This random strategy returns a move which is on an empty cell on the board.
 
 - R: rename Player_1, Player_2 to something like PlayerMarker.
 - R: Use a type for the board, other than string 
 
 🚧 WIP
-- Player can use a strategy called "Random". This random strategy returns a move which is on an empty cell on the board.
 
 ⚠️ TODO
 - Game asks players to move until tie or won.
