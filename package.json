@@ -6,7 +6,7 @@
     "test": "jest",
     "lint": "eslint . --ext .ts,.tsx --fix",
     "compile": "tsc",
-    "play": "node dist/src/runGame.js"
+    "tic-tac-dojo": "tsc && node dist/src/runGame.js"
   },
   "keywords": [],
   "author": "",

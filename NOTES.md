@@ -32,11 +32,12 @@
 - Game can be run from the console.
 - Determining winner has a bug:
   Player John (X) has won!
--  X | O | X
-- -----------
--  O | X | O
-- -----------
--    | X |
+  -  X | O | X
+  - -----------
+  -  O | X | O
+  - -----------
+  -  _ | X | _
+- Added readme
 
 🚧 WIP
 
