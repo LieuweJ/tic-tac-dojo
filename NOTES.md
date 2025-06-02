@@ -32,15 +32,14 @@
 - Game can be run from the console.
 
 🚧 WIP
-
-⚠️ TODO
 - Determining winner has a bug:
-  Player John (X) has won! 
+  Player John (X) has won!
 -  X | O | X
 - -----------
 -  O | X | O
 - -----------
 -    | X |
 
+⚠️ TODO
 
 🅿️ PARKED

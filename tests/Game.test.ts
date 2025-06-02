@@ -144,8 +144,8 @@ describe('Tic-tac-toe game should work', () => {
     const winnerName = 'John Doe';
 
     const game = new Game({
-      player1: createPlayerWithMoves(['00', '10', '20'], winnerName),
-      player2: createPlayerWithMoves(['02', '01'], 'Mary'),
+      player1: createPlayerWithMoves(['21', '01', '11'], winnerName),
+      player2: createPlayerWithMoves(['00', '10'], 'Mary'),
     });
 
     const expectedOutput = `Player ${winnerName} (${PLAYER_MARKER_X}) has won!`;
