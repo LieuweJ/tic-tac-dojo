@@ -29,9 +29,18 @@
 - Player should have a displayName
 - Game should communicate win with name of player, rather than X / O
 - Game should communicate 'ask next move' with name of player, rather than X / O
+- Game can be run from the console.
 
 🚧 WIP
 
 ⚠️ TODO
+- Determining winner has a bug:
+  Player John (X) has won! 
+-  X | O | X
+- -----------
+-  O | X | O
+- -----------
+-    | X |
+
 
 🅿️ PARKED

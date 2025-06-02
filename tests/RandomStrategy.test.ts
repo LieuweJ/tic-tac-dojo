@@ -1,5 +1,5 @@
-import { Board, EMPTY_CELL, PLAYER_MARKER_X, PLAYER_MARKER_O } from '@/Game';
-import { RandomStrategy } from '@/RandomStrategy';
+import { Board, EMPTY_CELL, PLAYER_MARKER_X, PLAYER_MARKER_O } from '../src/Game';
+import { RandomStrategy } from '../src/RandomStrategy';
 
 describe('RandomStrategy should work', () => {
   test('RandomStrategy returns a move which is on an empty cell on the board.', () => {

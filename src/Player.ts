@@ -1,4 +1,4 @@
-import { Board, Move, PlayerMarker as PlayerMarker } from '@/Game';
+import { Board, Move, PlayerMarker as PlayerMarker } from './Game';
 
 export interface PlayerInterface {
   getDisplayName(): string;

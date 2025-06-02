@@ -1,5 +1,5 @@
-import { PLAYER_MARKER_X, PLAYER_MARKER_O, Game, Move } from '@/Game';
-import { Player, PlayerInterface, PlayerStrategy } from '@/Player';
+import { PLAYER_MARKER_X, PLAYER_MARKER_O, Game, Move } from '../src/Game';
+import { Player, PlayerInterface, PlayerStrategy } from '../src/Player';
 
 class TestStrategyWithPredictedMoves implements PlayerStrategy {
   private fifoMoves: Move[];

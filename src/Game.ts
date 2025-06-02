@@ -1,4 +1,4 @@
-import { PlayerInterface } from '@/Player';
+import { PlayerInterface } from './Player';
 
 export const EMPTY_CELL = '_';
 export const PLAYER_MARKER_X = 'X';
@@ -48,14 +48,18 @@ export class Game {
 
   play() {
     while (this.gameState === GAME_STATES.IN_PROGRESS) {
+      console.log(this.displayGameState());
       const currentPlayer = this.players[this.currentPlayerMarker];
 
       this.updateBoard(currentPlayer.move(this.board, this.currentPlayerMarker));
       this.updateGameState();
+      console.log(this.displayBoard());
 
       this.updateCurrentPlayerMarker();
     }
 
+    console.log(this.displayGameState());
+    console.log(this.displayBoard());
     return this.displayBoard();
   }
 

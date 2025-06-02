@@ -1,5 +1,5 @@
-import { PlayerStrategy } from '@/Player';
-import { Board, Move, EMPTY_CELL, ALL_BOARD_MOVES } from '@/Game';
+import { PlayerStrategy } from './Player';
+import { Board, Move, EMPTY_CELL, ALL_BOARD_MOVES } from './Game';
 
 export class RandomStrategy implements PlayerStrategy {
   private typedMove(move: string): Move {
