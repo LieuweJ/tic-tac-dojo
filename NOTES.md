@@ -28,9 +28,9 @@
 - R: Refactor 'makeMove' to only make the move, move more logic to method 'Play'
 - Player should have a displayName
 - Game should communicate win with name of player, rather than X / O
+- Game should communicate 'ask next move' with name of player, rather than X / O
 
 🚧 WIP
-- Game should communicate 'ask next move' with name of player, rather than X / O
 
 ⚠️ TODO
 
