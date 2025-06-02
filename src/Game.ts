@@ -121,18 +121,16 @@ export class Game {
   }
 
   private hasHorizontalWinner(): boolean {
-    for (let topRowIndex = 0; topRowIndex < 3; topRowIndex++) {
-      const cellToCheck = this.board[0][0];
+    for (let colIndex = 0; colIndex < 3; colIndex++) {
+      const cellToCheck = this.board[colIndex][0];
 
       if (cellToCheck === EMPTY_CELL) {
         continue;
       }
 
       // check horizontal winner
-      for (let colsIndex = 0; colsIndex < 2; colsIndex++) {
-        if (this.board[1][colsIndex] === cellToCheck && this.board[2][colsIndex] === cellToCheck) {
-          return true;
-        }
+      if (cellToCheck === this.board[colIndex][1] && cellToCheck === this.board[colIndex][2]) {
+        return true;
       }
     }
 
@@ -140,17 +138,15 @@ export class Game {
   }
 
   private hasVerticalWinner(): boolean {
-    for (let topRowIndex = 0; topRowIndex < 3; topRowIndex++) {
-      const cellToCheck = this.board[0][0];
+    for (let rowIndex = 0; rowIndex < 3; rowIndex++) {
+      const cellToCheck = this.board[0][rowIndex];
 
       if (cellToCheck === EMPTY_CELL) {
         continue;
       }
 
-      for (let rowsIndex = 0; rowsIndex < 2; rowsIndex++) {
-        if (this.board[rowsIndex][1] === cellToCheck && this.board[rowsIndex][2] === cellToCheck) {
-          return true;
-        }
+      if (cellToCheck === this.board[1][rowIndex] && cellToCheck === this.board[2][rowIndex]) {
+        return true;
       }
     }
 
