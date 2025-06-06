@@ -1,10 +1,12 @@
 {
   "name": "tic-tac-dojo",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "runGame.js",
   "scripts": {
     "test": "jest",
-    "lint": "eslint . --ext .ts,.tsx --fix"
+    "lint": "eslint . --ext .ts,.tsx --fix",
+    "compile": "tsc",
+    "tic-tac-dojo": "tsc && node dist/src/runGame.js"
   },
   "keywords": [],
   "author": "",
@@ -26,5 +28,5 @@
     "prettier": "^3.5.3",
     "ts-jest": "^29.3.4"
   },
-  "type": "module"
+  "type": "commonjs"
 }
